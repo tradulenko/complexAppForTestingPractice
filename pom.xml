@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>complexAppForTesting</name>
-    <url>https://qa-complexapp.onrender.com/</url>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,12 +35,6 @@
         <resources>
             <resource>
                 <directory>src/main/java/resources</directory>
-            </resource>
-            <resource>
-                <directory>src</directory>
-            </resource>
-            <resource>
-                <directory>src/test/resources</directory>
             </resource>
         </resources>
 
