@@ -11,12 +11,9 @@ abstract class ParentPage extends CommonActionsWithElements{
     protected String baseUrl;
 
 
-    /** запуск тестів на різних евнах:куа/стж і тд.**/
-
     public ParentPage(WebDriver webDriver) {
         super(webDriver);
-        baseUrl=configProperties.base_url()
-                .replace("[env]",System.getProperty("env","qa"));
+        baseUrl="https://"+System.getProperty("env","qa")+"-"+System.getProperty("url");
 
     }
     abstract String getRelativeUrl();

@@ -21,8 +21,6 @@ import java.time.Duration;
 public class BaseTest {
     WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
-
-    /**объявляю змінні**/
     protected LoginPage loginPage;
 
 
@@ -30,20 +28,14 @@ public class BaseTest {
     public void setUp(){
         logger.info("------"+testName.getMethodName()+" was started-------");
         initDriver();
+        //      initBaseUrl();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         logger.info("Browser was opened");
 
-        /**створюю змінну сторінки**/
         loginPage = new LoginPage(webDriver);
 
     }
-    //   @After
-    //   public void tearDown(){
-    //       webDriver.quit();
-    //       logger.info("Browser was closed");
-    //       logger.info("------"+testName.getMethodName()+" was ended-------");
-    //   }
 
     @Rule
     public TestName testName=new TestName();
@@ -95,7 +87,6 @@ public class BaseTest {
         return webDriver;
 
     }
-
 
 }
 

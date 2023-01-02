@@ -78,9 +78,8 @@ public class CommonActionsWithElements {
         }
 
     }
-
     /**
-     * Вибираємо значення в дропдауні по видимому тексту
+     * Choosing value in the dropdown using visible text
      *
      * @param dropDown
      * @param text
@@ -95,7 +94,7 @@ public class CommonActionsWithElements {
         } catch (Exception e) {
             printErrorAndStopTest(e);
         }
-        /** Вибираємо значення в дропдауні по value
+        /** Choosing value in the dropdown
          * @param dropDown
          * @param value **/
     }
@@ -109,13 +108,7 @@ public class CommonActionsWithElements {
         } catch (Exception e) {
             printErrorAndStopTest(e);
         }
-
-
     }
-
-    /**
-     * метод домашка 3
-     **/
 
     protected void selectDropdownElementsUI(WebElement dropDown, WebElement optionDropDown) {
         try {
@@ -129,32 +122,7 @@ public class CommonActionsWithElements {
             printErrorAndStopTest(e);
         }
 
-
     }
-
-    public void usersPressesKeyEnterTime(int numberOfTimes) {
-        Actions actions = new Actions(webDriver);
-        for (int i = 0; i < numberOfTimes; i++) {
-            actions.sendKeys(Keys.ENTER).build().perform();
-        }
-    }
-
-    public void usersPressesKeyTabTime(int numberOfTimes) {
-        Actions actions = new Actions(webDriver);
-        for (int i = 0; i < numberOfTimes; i++) {
-            actions.sendKeys(Keys.TAB).build().perform();
-        }
-
-    }
-
-    public void usersPressesKeyF5(int numberOfTimes) {
-        Actions actions = new Actions(webDriver);
-        for (int i = 0; i < numberOfTimes; i++) {
-            actions.sendKeys(Keys.F5).build().perform();
-        }
-
-    }
-
 
     public void userOpensNewTab() {
         ((JavascriptExecutor) webDriver).executeScript("window.open()");
@@ -170,31 +138,6 @@ public class CommonActionsWithElements {
 
     }
 
-    /**
-     * метод moveToElement (аналог скрола )
-     * <p>
-     * WebElement element = driver.findElement(By.id("my-id"));
-     * Actions actions = new Actions(driver);
-     * actions.moveToElement(element);
-     * actions.perform();
-     * <p>
-     * —————————-
-     * метод скрола з використанням javaScript
-     * <p>
-     * JavascriptExecutor js = (JavascriptExecutor) driver;
-     * js.executeScript("javascript:window.scrollBy(250,350)");
-     * <p>
-     * —————————-
-     * Емуляція натискання PageDown
-     * <p>
-     * WebElement.sendKeys(Keys.DOWN);
-     * <p>
-     * —————————-
-     * скрол до елемента з javaScript
-     * <p>
-     * webElement = driver.findElement(By.xpath("bla-bla-bla"));
-     * ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", webElement);
-     **/
     private String getElementName(WebElement webElement) {
         try {
             return webElement.getAccessibleName();
@@ -203,7 +146,6 @@ public class CommonActionsWithElements {
         }
 
     }
-
 
     private void printErrorAndStopTest(Exception e) {
         logger.error("Can not work with element " + e);
