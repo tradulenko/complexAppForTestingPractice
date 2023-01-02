@@ -28,7 +28,6 @@ public class BaseTest {
     public void setUp(){
         logger.info("------"+testName.getMethodName()+" was started-------");
         initDriver();
-        //      initBaseUrl();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         logger.info("Browser was opened");
