@@ -2,6 +2,7 @@ package pages;
 
 
 import libs.ConfigProperties;
+
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -20,14 +21,16 @@ public class CommonActionsWithElements {
     Logger logger = Logger.getLogger(getClass());
     protected WebDriverWait webDriverWaitLow, webDriverWaitHigh;
 
-    public static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    public final static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
     public CommonActionsWithElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
 
-        webDriverWaitLow = new WebDriverWait(webDriver, Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
-        webDriverWaitHigh = new WebDriverWait(webDriver, Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_HIGHT()));
+        webDriverWaitLow = new WebDriverWait(webDriver,
+                Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
+        webDriverWaitHigh = new WebDriverWait(webDriver,
+                Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
     }
 
     protected void enterTextIntoElement(WebElement webElement, String text) {
@@ -78,13 +81,13 @@ public class CommonActionsWithElements {
         }
 
     }
+
     /**
      * Choosing value in the dropdown using visible text
      *
      * @param dropDown
      * @param text
-     **/
-
+     */
     protected void selectTextInDropDown(WebElement dropDown, String text) {
         try {
             Select select = new Select(dropDown);
@@ -94,11 +97,15 @@ public class CommonActionsWithElements {
         } catch (Exception e) {
             printErrorAndStopTest(e);
         }
-        /** Choosing value in the dropdown
-         * @param dropDown
-         * @param value **/
+
     }
 
+    /**
+     * Choosing value in the dropdown
+     *
+     * @param dropDown
+     * @param value
+     */
     protected void selectValueInDropDown(WebElement dropDown, String value) {
         try {
             Select select = new Select(dropDown);
@@ -110,16 +117,25 @@ public class CommonActionsWithElements {
         }
     }
 
-    protected void selectDropdownElementsUI(WebElement dropDown, WebElement optionDropDown) {
-        try {
-
-            clickOnElement(dropDown);
-            logger.info(dropDown + "was ckicked");
-            clickOnElement(optionDropDown);
-            logger.info(optionDropDown + "was ckicked");
-
-        } catch (Exception e) {
-            printErrorAndStopTest(e);
+    /**
+     * @param checkbox
+     * @param neededValue (Only can be "check" or "uncheck")
+     */
+    protected void selectCheckBoxValue(WebElement checkbox, String neededValue) {
+        boolean isNeededStateCheck = neededValue.equalsIgnoreCase("check");
+        boolean isNeededStateUnCheck = neededValue.equalsIgnoreCase("uncheck");
+        boolean isCheckBoxSelected = checkbox.isSelected();
+        if (isNeededStateCheck || isNeededStateUnCheck) {
+            if ((isCheckBoxSelected && isNeededStateCheck) ||
+                    (!isCheckBoxSelected && isNeededStateUnCheck)) {
+                logger.info("Check box value is as needed");
+            } else {
+                checkbox.click();
+                logger.info("Checkbox value is changed");
+            }
+        } else {
+            logger.error("Invalid values, can be only \"check\" or \"uncheck\"");
+            Assert.fail("Invalid values, can be only \"check\" or \"uncheck\"");
         }
 
     }
@@ -131,11 +147,9 @@ public class CommonActionsWithElements {
     }
 
     public void scrollToElement(WebElement buttonSaveUpdates) {
-        WebElement element = webDriver.findElement(By.id("my-id"));
         Actions actions = new Actions(webDriver);
-        actions.moveToElement(element);
+        actions.moveToElement(buttonSaveUpdates);
         actions.perform();
-
     }
 
     private String getElementName(WebElement webElement) {

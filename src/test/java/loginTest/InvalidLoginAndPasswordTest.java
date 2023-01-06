@@ -31,10 +31,10 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
     @TestCaseName("Invalid Login and Password : valid login= {0} & invalid pass = {1},invalid login = {2} & valid pass = {3},invalid login = {2} & invalid pass = {1} ")
     public void invalidLoginAndPasswordWithParameters(String userName, String password) {
         loginPage
-                .openLoginPage();
-        loginPage.enterUserNameIntoLoginInput(userName);
-        loginPage.enterPasswordIntoLoginInput(password);
-        loginPage.clickOnButtonSignIn();
+                .openLoginPage()
+                .enterUserNameIntoLoginInput(userName)
+                .enterPasswordIntoLoginInput(password)
+                .clickOnButtonSignIn();
         Assert.assertTrue("Message 'Invalid username / pasword' is displayed "
                 , loginPage.isMessageInvalidCredsDisplayed());
 

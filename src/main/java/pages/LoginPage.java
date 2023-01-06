@@ -8,9 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends ParentPage {
-  //  private HeaderElement headerElement = new HeaderElement(webDriver);
-
-
     @FindBy(xpath = ".//input[@name='username' and @placeholder='Username']")
     private WebElement inputUserNameHeader;
 
@@ -23,6 +20,8 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = ".//button[text()='Sign Out']")
     private WebElement buttonSingOut;
 
+    @FindBy(xpath = ".//div[@Class='alert alert-danger text-center']")
+    private WebElement messageInvalidUserPassword;
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
@@ -48,16 +47,14 @@ public class LoginPage extends ParentPage {
 
     @Step
     public LoginPage enterUserNameIntoLoginInput(String userName) {
-
         enterTextIntoElement(inputUserNameHeader, userName);
-        return new LoginPage(webDriver);
+        return this;
     }
 
     @Step
     public LoginPage enterPasswordIntoLoginInput(String password) {
-
         enterTextIntoElement(inputUserPasswordHeader, password);
-        return new LoginPage(webDriver);
+        return this;
     }
 
     @Step
@@ -66,17 +63,6 @@ public class LoginPage extends ParentPage {
     }
 
     public boolean isMessageInvalidCredsDisplayed() {
-        try {
-            WebElement messageInvalidCreds = webDriver.findElement(By.xpath(".//div[@class='alert alert-danger text-center' and contains(text(),'Invalid username / pasword')]"));
-            return messageInvalidCreds.isDisplayed();
-
-        } catch (Exception e) {
-            return true;
-        }
-    }
-
-    private void printErrorAndStopTest(Exception e) {
-        logger.error("Can not work with element " + e);
-        Assert.fail("Can not work with element " + e);
+        return isElementDisplayed(messageInvalidUserPassword);
     }
 }
