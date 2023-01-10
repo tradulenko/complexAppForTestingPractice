@@ -8,7 +8,7 @@ target/
 target/generated-sources/
 target/generated-test-sources/
 target/test-classes
-target/site
+src/main/java/resources/HiddenConfig.properties
 *.log
 *.iml
 *.ipr

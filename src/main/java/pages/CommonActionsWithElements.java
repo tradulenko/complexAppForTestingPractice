@@ -3,6 +3,7 @@ package pages;
 
 import libs.ConfigProperties;
 
+import libs.ConfigPropertiesHidden;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -20,8 +21,9 @@ public class CommonActionsWithElements {
     protected WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
     protected WebDriverWait webDriverWaitLow, webDriverWaitHigh;
-
     public final static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+    public final static ConfigPropertiesHidden configPropertiesHidden = ConfigFactory.create(ConfigPropertiesHidden.class);
+
 
     public CommonActionsWithElements(WebDriver webDriver) {
         this.webDriver = webDriver;

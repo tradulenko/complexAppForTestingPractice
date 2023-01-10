@@ -7,6 +7,7 @@ import junitparams.naming.TestCaseName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import pages.CommonActionsWithElements;
 
 @RunWith(JUnitParamsRunner.class)
 
@@ -35,8 +36,17 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
                 .enterUserNameIntoLoginInput(userName)
                 .enterPasswordIntoLoginInput(password)
                 .clickOnButtonSignIn();
-        Assert.assertTrue("Message 'Invalid username / pasword' is displayed "
+        Assert.assertTrue("Message 'Invalid username / password' is displayed "
                 , loginPage.isMessageInvalidCredsDisplayed());
+
+    }
+
+    @Test
+    public void LoginDefaultUser(){
+        loginPage.openLoginPage()
+                .enterUserNameIntoLoginInput(CommonActionsWithElements.configPropertiesHidden.DEFAULT_LOGIN())
+                .enterPasswordIntoLoginInput(CommonActionsWithElements.configPropertiesHidden.DEFAULT_PASSWORD())
+                .clickOnButtonSignIn();
 
     }
 }
