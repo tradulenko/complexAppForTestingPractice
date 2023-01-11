@@ -17,6 +17,6 @@ public class ValidLoginTest extends BaseTest {
                 .enterPasswordIntoLoginInput(password)
                 .clickOnButtonSignIn();
 
-        Assert.assertTrue("Button SignOut doesn't displayed", homePage.headerElement.isButtonSignOutDisplayed());
+        Assert.assertTrue("Button SignOut doesn't displayed", homePage.getHeaderElement().isButtonSignOutDisplayed());
     }
 }

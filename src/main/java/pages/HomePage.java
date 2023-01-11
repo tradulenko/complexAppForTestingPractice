@@ -3,9 +3,9 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import pages.elements.HeaderElement;
 
-public class HomePage extends ParentPage{
+public class HomePage extends ParentPage {
 
-    public HeaderElement headerElement=new HeaderElement(webDriver);
+    private HeaderElement headerElement = new HeaderElement(webDriver);
 
     public HeaderElement getHeaderElement() {
         return headerElement;
@@ -19,7 +19,6 @@ public class HomePage extends ParentPage{
     String getRelativeUrl() {
         return "/";
     }
-
 
 
 }
