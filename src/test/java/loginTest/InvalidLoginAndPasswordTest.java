@@ -7,7 +7,6 @@ import junitparams.naming.TestCaseName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import pages.PropertiesProvider;
 
 
 @RunWith(JUnitParamsRunner.class)
@@ -33,8 +32,8 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
 
     public static Object[][] provideParameters() {
         return new Object[][]{
-                new Object[]{login, INVALID_PASSWORD},
-                new Object[]{INVALID_USER_NAME, password},
+                new Object[]{defaultValidLogin, INVALID_PASSWORD},
+                new Object[]{INVALID_USER_NAME, defaultValidPassword},
                 new Object[]{INVALID_USER_NAME, INVALID_PASSWORD}
 
         };

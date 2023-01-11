@@ -26,8 +26,8 @@ public class BaseTest {
     Logger logger = Logger.getLogger(getClass());
     protected LoginPage loginPage;
     protected HomePage homePage;
-    protected static String login=System.getProperty("login", PropertiesProvider.configPropertiesHidden.DEFAULT_LOGIN());
-    protected static String password = System.getProperty("password", PropertiesProvider.configPropertiesHidden.DEFAULT_PASSWORD());
+    protected static String defaultValidLogin = System.getProperty("login", PropertiesProvider.configPropertiesHidden.DEFAULT_LOGIN());
+    protected static String defaultValidPassword = System.getProperty("password", PropertiesProvider.configPropertiesHidden.DEFAULT_PASSWORD());
 
     @Before
     public void setUp() {

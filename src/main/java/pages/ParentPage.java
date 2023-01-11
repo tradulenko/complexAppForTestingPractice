@@ -13,8 +13,12 @@ abstract class ParentPage extends CommonActionsWithElements {
 
     public ParentPage(WebDriver webDriver) {
         super(webDriver);
-        baseUrl = "https://" + System.getProperty("env", "qa") + "-" + System.getProperty("url", configPropertiesHidden.BASE_URL());
-
+        if (!configPropertiesHidden.BASE_URL().isEmpty()) {
+            baseUrl = "https://" + System.getProperty("env", "qa") + "-" + System.getProperty("url", configPropertiesHidden.BASE_URL());
+        } else {
+            logger.info("add params to the command line or load HiddenConfig");
+            Assert.fail("add params to the command line or load HiddenConfig");
+        }
     }
 
     abstract String getRelativeUrl();
