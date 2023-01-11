@@ -7,29 +7,33 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-abstract class ParentPage extends CommonActionsWithElements{
+abstract class ParentPage extends CommonActionsWithElements {
     protected String baseUrl;
 
 
     public ParentPage(WebDriver webDriver) {
         super(webDriver);
-        baseUrl="https://"+System.getProperty("env","qa")+"-"+System.getProperty("url");
+        baseUrl = "https://" + System.getProperty("env", "qa") + "-" + System.getProperty("url");
 
     }
+
     abstract String getRelativeUrl();
 
-    protected void checkUrl(){
+    protected void checkUrl() {
 
         Assert.assertEquals(
                 "Invalid Page",
-                baseUrl+getRelativeUrl(),webDriver.getCurrentUrl());
+                baseUrl + getRelativeUrl(), webDriver.getCurrentUrl());
     }
-    protected void checkUrlWithPattern(){
-        Assert.assertThat("InvalidPage"
-                ,webDriver.getCurrentUrl()
-                ,containsString(baseUrl+getRelativeUrl()));
+
+    protected void checkUrlWithPattern() {
+        String actualURL = webDriver.getCurrentUrl();
+        Assert.assertTrue("\n ActualURL " + actualURL + "\n "
+                        + "ExpectedURL pattern" + baseUrl + getRelativeUrl() + " \n "
+                , actualURL.matches(baseUrl + getRelativeUrl()));
     }
-    protected void waitChatToBeHide(){
+
+    protected void waitChatToBeHide() {
         webDriverWaitLow.withMessage("Chat is not closed")
                 .until(ExpectedConditions
                         .invisibilityOfElementLocated(By.xpath(".//*[@id='chat-wrapper']")));
