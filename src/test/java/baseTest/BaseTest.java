@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import pages.HomePage;
 import pages.LoginPage;
 
 import java.time.Duration;
@@ -22,22 +23,24 @@ public class BaseTest {
     WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
     protected LoginPage loginPage;
+    protected HomePage homePage;
 
 
     @Before
-    public void setUp(){
-        logger.info("------"+testName.getMethodName()+" was started-------");
+    public void setUp() {
+        logger.info("------" + testName.getMethodName() + " was started-------");
         initDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         logger.info("Browser was opened");
 
         loginPage = new LoginPage(webDriver);
+        homePage = new HomePage(webDriver);
 
     }
 
     @Rule
-    public TestName testName=new TestName();
+    public TestName testName = new TestName();
 
     @Rule
     public TestWatcher watchman = new TestWatcher() {
@@ -45,10 +48,12 @@ public class BaseTest {
         protected void failed(Throwable e, Description description) {
             screenshot();
         }
+
         @Attachment(value = "Page screenshot", type = "image/png")
         public byte[] saveScreenshot(byte[] screenShot) {
             return screenShot;
         }
+
         public void screenshot() {
             if (webDriver == null) {
                 logger.info("Driver for screenshot not found");
@@ -56,6 +61,7 @@ public class BaseTest {
             }
             saveScreenshot(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES));
         }
+
         @Override
         protected void finished(Description description) {
             logger.info(String.format("Finished test: %s::%s", description.getClassName(), description.getMethodName()));
@@ -69,15 +75,15 @@ public class BaseTest {
     };
 
 
-    private WebDriver initDriver(){
-        String browser=System.getProperty("browser");
-        if((browser==null)||"chrome".equalsIgnoreCase(browser)){
+    private WebDriver initDriver() {
+        String browser = System.getProperty("browser");
+        if ((browser == null) || "chrome".equalsIgnoreCase(browser)) {
             WebDriverManager.chromedriver().setup();
-            webDriver=new ChromeDriver();
-        }else if("firefox".equalsIgnoreCase(browser)){
+            webDriver = new ChromeDriver();
+        } else if ("firefox".equalsIgnoreCase(browser)) {
             WebDriverManager.firefoxdriver().setup();
-            webDriver=new FirefoxDriver();
-        }else if ("ie".equalsIgnoreCase(browser)) {
+            webDriver = new FirefoxDriver();
+        } else if ("ie".equalsIgnoreCase(browser)) {
             //WebDriverManager.iedriver().setup();
             // in most cases 32bit version is needed
             WebDriverManager.iedriver().arch32().setup();

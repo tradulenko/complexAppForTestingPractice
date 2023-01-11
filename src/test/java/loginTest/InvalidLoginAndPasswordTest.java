@@ -15,10 +15,8 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
 
     final static String USER_NAME = "qaauto";
     final static String INVALID_USER_NAME = "qa";
-
     final static String PASSWORD = "123456qwerty";
     final static String INVALID_PASSWORD = "123456";
-
     final static String COMMA = ",";
 
 
@@ -42,11 +40,12 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
     }
 
     @Test
-    public void LoginDefaultUser(){
+    public void loginValidUser() {
         loginPage.openLoginPage()
                 .enterUserNameIntoLoginInput(CommonActionsWithElements.configPropertiesHidden.DEFAULT_LOGIN())
                 .enterPasswordIntoLoginInput(CommonActionsWithElements.configPropertiesHidden.DEFAULT_PASSWORD())
                 .clickOnButtonSignIn();
 
+        Assert.assertTrue("Button SignOut doesn't displayed", homePage.headerElement.isButtonSignOutDisplayed());
     }
 }
