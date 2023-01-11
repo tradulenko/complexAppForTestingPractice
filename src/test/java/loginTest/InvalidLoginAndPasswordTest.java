@@ -7,7 +7,7 @@ import junitparams.naming.TestCaseName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import pages.CommonActionsWithElements;
+
 
 @RunWith(JUnitParamsRunner.class)
 
@@ -39,13 +39,4 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
 
     }
 
-    @Test
-    public void loginValidUser() {
-        loginPage.openLoginPage()
-                .enterUserNameIntoLoginInput(CommonActionsWithElements.configPropertiesHidden.DEFAULT_LOGIN())
-                .enterPasswordIntoLoginInput(CommonActionsWithElements.configPropertiesHidden.DEFAULT_PASSWORD())
-                .clickOnButtonSignIn();
-
-        Assert.assertTrue("Button SignOut doesn't displayed", homePage.headerElement.isButtonSignOutDisplayed());
-    }
 }

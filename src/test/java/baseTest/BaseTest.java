@@ -14,6 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import pages.CommonActionsWithElements;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -24,7 +25,8 @@ public class BaseTest {
     Logger logger = Logger.getLogger(getClass());
     protected LoginPage loginPage;
     protected HomePage homePage;
-
+    protected String login;
+    protected String password;
 
     @Before
     public void setUp() {
@@ -36,6 +38,10 @@ public class BaseTest {
 
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+
+        login = System.getProperty("login", CommonActionsWithElements.configPropertiesHidden.DEFAULT_LOGIN());
+        password = System.getProperty("password", CommonActionsWithElements.configPropertiesHidden.DEFAULT_PASSWORD());
+
 
     }
 
