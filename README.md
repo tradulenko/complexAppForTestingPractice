@@ -9,4 +9,4 @@ For run tests next params should be added to command line
 
 -Dlogin=valid userName. Without this params - should be run with default userName
 
--Dpassword=valid password. Without this params - should be run with default password for default user
+-Dpassword=valid password. Without this params - should be run with default password 
