@@ -1,9 +1,5 @@
 package pages;
 
-
-import libs.ConfigProperties;
-
-import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -21,16 +17,14 @@ public class CommonActionsWithElements {
     Logger logger = Logger.getLogger(getClass());
     protected WebDriverWait webDriverWaitLow, webDriverWaitHigh;
 
-    public final static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
-
     public CommonActionsWithElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
 
         webDriverWaitLow = new WebDriverWait(webDriver,
-                Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
+                Duration.ofSeconds(PropertiesProvider.configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
         webDriverWaitHigh = new WebDriverWait(webDriver,
-                Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
+                Duration.ofSeconds(PropertiesProvider.configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
     }
 
     protected void enterTextIntoElement(WebElement webElement, String text) {
