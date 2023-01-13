@@ -18,19 +18,21 @@ public class GlobalParametersProvider {
     }
 
     public static String getFullBaseUrl() {
-        if (BASE_URL_LAST_PART == null) throw new NotSpecifiedGlobalParameterException("Add params 'url' to the command line or load HiddenConfig with valid value");
+        if ((BASE_URL_LAST_PART == null) || BASE_URL_LAST_PART.isEmpty())
+            throw new NotSpecifiedGlobalParameterException("Add params 'url' to the command line or load HiddenConfig with valid value");
         return FULL_BASE_URL;
     }
 
     public static String getDefaultValidLogin() throws NotSpecifiedGlobalParameterException {
-        if (DEFAULT_VALID_LOGIN == null) {
+        if ((DEFAULT_VALID_LOGIN == null) || DEFAULT_VALID_LOGIN.isEmpty()) {
             throw new NotSpecifiedGlobalParameterException("Add params 'login' to the command line or load HiddenConfig with valid value");
         }
         return DEFAULT_VALID_LOGIN;
     }
 
     public static String getDefaultValidPassword() throws NotSpecifiedGlobalParameterException{
-        if (DEFAULT_VALID_PASSWORD == null) throw new NotSpecifiedGlobalParameterException("Add params 'password' to the command line or load HiddenConfig with valid value");
+        if ((DEFAULT_VALID_PASSWORD == null) || DEFAULT_VALID_PASSWORD.isEmpty())
+            throw new NotSpecifiedGlobalParameterException("Add params 'password' to the command line or load HiddenConfig with valid value");
         return DEFAULT_VALID_PASSWORD;
     }
 }
