@@ -1,9 +1,11 @@
-package loginTest;
+package login_test;
 
-import baseTest.BaseTest;
+import base_test.BaseTest;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import junitparams.naming.TestCaseName;
+import libs.global_parameters.GlobalParametersProvider;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +20,7 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
 
     @Test
     @Parameters(method = "provideParameters")
-    @TestCaseName("Invalid Login and Password : valid login= {0} & invalid pass = {1},invalid login = {2} & valid pass = {3},invalid login = {2} & invalid pass = {1} ")
+    @TestCaseName("Invalid Login and Password: login = {0} , password = {1}")
     public void invalidLoginAndPasswordWithParameters(String userName, String userPassword) {
         loginPage
                 .openLoginPage()
@@ -32,10 +34,9 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
 
     public static Object[][] provideParameters() {
         return new Object[][]{
-                new Object[]{defaultValidLogin, INVALID_PASSWORD},
-                new Object[]{INVALID_USER_NAME, defaultValidPassword},
+                new Object[]{GlobalParametersProvider.getDefaultValidLogin(), INVALID_PASSWORD},
+                new Object[]{INVALID_USER_NAME, GlobalParametersProvider.getDefaultValidPassword()},
                 new Object[]{INVALID_USER_NAME, INVALID_PASSWORD}
-
         };
     }
 }

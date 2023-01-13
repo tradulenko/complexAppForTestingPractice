@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 
+import libs.properties_files.PropertiesFilesProvider;
+
 public class CommonActionsWithElements {
     protected WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
@@ -22,9 +24,9 @@ public class CommonActionsWithElements {
         PageFactory.initElements(webDriver, this);
 
         webDriverWaitLow = new WebDriverWait(webDriver,
-                Duration.ofSeconds(PropertiesProvider.configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
+                Duration.ofSeconds(PropertiesFilesProvider.configProperties.TIME_FOR_EXPLICIT_WAIT_LOW()));
         webDriverWaitHigh = new WebDriverWait(webDriver,
-                Duration.ofSeconds(PropertiesProvider.configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
+                Duration.ofSeconds(PropertiesFilesProvider.configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
     }
 
     protected void enterTextIntoElement(WebElement webElement, String text) {

@@ -1,12 +1,15 @@
-# complexAppForTestingPractice
-This is TAF for practice for AQA
+## This is TAF for practice for AQA
 
-For run tests next params should be added to command line
+---
 
--Denv=qa (specify env). Without this params - should be run on Qa
+### For run tests next params should be added to command line
 
--Durl=appropriate URL without env part  
+**-Denv**=qa (specify env). Without this params - should be run on Qa
 
--Dlogin=valid userName. Without this params - should be run with default userName
+**-Durl**=appropriate URL without env part  
 
--Dpassword=valid password. Without this params - should be run with default password 
+**-Dlogin**=valid userName. Without this params - should be run with default userName
+
+**-Dpassword**=valid password. Without this params - should be run with default password
+
+---
