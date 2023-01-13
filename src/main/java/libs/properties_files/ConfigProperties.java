@@ -1,4 +1,4 @@
-package libs;
+package libs.properties_files;
 
 
 import org.aeonbits.owner.Config;
