@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import libs.Utils;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,18 @@ public class LoginPage extends ParentPage {
 
     @FindBy(xpath = ".//div[@Class='alert alert-danger text-center']")
     private WebElement messageInvalidUserPassword;
+
+    @FindBy(xpath = ".//*[@id='username-register']")
+    private WebElement inputUserNameRegister;
+
+    @FindBy(xpath = ".//*[@id='password-register']")
+    private WebElement inputUserPasswordRegister;
+
+    @FindBy(xpath = ".//*[@id='email-register']")
+    private WebElement emailRegister;
+
+    @FindBy(xpath = ".//div//button[@type='submit']")
+    private WebElement buttonSignUp;
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
@@ -64,5 +77,26 @@ public class LoginPage extends ParentPage {
 
     public boolean isMessageInvalidCredsDisplayed() {
         return isElementDisplayed(messageInvalidUserPassword);
+    }
+
+    public LoginPage enterUserNameInRegisterForm(String name) {
+        enterTextIntoElement(inputUserNameRegister, name);
+        return this;
+    }
+
+    public LoginPage enterEmailInRegisterForm(String email) {
+        enterTextIntoElement(emailRegister, email);
+        return this;
+    }
+
+    public LoginPage enterPasswordInRegisterForm(String password) {
+        enterTextIntoElement(inputUserPasswordRegister, password);
+        return this;
+    }
+
+    public HomePage clickOnSignUpButton() {
+        Utils.waitABit(2);
+        clickOnElement(buttonSignUp);
+        return new HomePage(webDriver);
     }
 }
