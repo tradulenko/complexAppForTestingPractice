@@ -57,6 +57,12 @@ public class LoginPage extends ParentPage {
         return this;
     }
 
+    public LoginPage checkRedirectToLoginPage() {
+        checkUrl();
+        Assert.assertTrue("Login Page is not loaded", isElementDisplayed(buttonSingIn));
+        return this;
+    }
+
     @Step
     public LoginPage enterUserNameIntoLoginInput(String userName) {
         enterTextIntoElement(inputUserNameHeader, userName);

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.CommonActionsWithElements;
 import pages.CreatePostPage;
+import pages.LoginPage;
+import pages.MyProfilePage;
 
 public class HeaderElement extends CommonActionsWithElements {
 
@@ -27,6 +29,16 @@ public class HeaderElement extends CommonActionsWithElements {
 
     public boolean isButtonSignOutDisplayed() {
         return isElementDisplayed(buttonSignOut);
+    }
+
+    public MyProfilePage clickOnAvatarIcon() {
+        clickOnElement(avatarIcon);
+        return new MyProfilePage(webDriver);
+    }
+
+    public LoginPage clickOnSignOutButton() {
+        clickOnElement(buttonSignOut);
+        return new LoginPage(webDriver);
     }
 
     public boolean isAvatarIconDisplayed() {
