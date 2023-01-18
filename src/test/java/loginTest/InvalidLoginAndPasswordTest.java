@@ -7,6 +7,7 @@ import junitparams.naming.TestCaseName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.Keys;
 
 @RunWith(JUnitParamsRunner.class)
 
@@ -34,6 +35,7 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
                 .openLoginPage();
         loginPage.enterUserNameIntoLoginInput(userName);
         loginPage.enterPasswordIntoLoginInput(password);
+        loginPage.usersPressesKeyEnterTime(Keys.F5,1);
         loginPage.clickOnButtonSignIn();
         Assert.assertTrue("Message 'Invalid username / pasword' is displayed "
                 , loginPage.isMessageInvalidCredsDisplayed());
