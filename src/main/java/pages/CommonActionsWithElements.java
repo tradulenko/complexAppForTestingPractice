@@ -157,6 +157,13 @@ public class CommonActionsWithElements {
 
     }
 
+    public void usersPressesKeyEnterTime(  Keys keys,int numberOfTimes) {
+        Actions actions = new Actions(webDriver);
+        for (int i = 0; i < numberOfTimes; i++) {
+            actions.sendKeys(keys).build().perform();
+        }
+    }
+
     private void printErrorAndStopTest(Exception e) {
         logger.error("Can not work with element " + e);
         Assert.fail("Can not work with element " + e);
