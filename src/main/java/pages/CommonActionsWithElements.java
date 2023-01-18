@@ -148,6 +148,13 @@ public class CommonActionsWithElements {
         actions.perform();
     }
 
+    public void usersPressesKeyEnterTime(  Keys keys,int numberOfTimes) {
+        Actions actions = new Actions(webDriver);
+        for (int i = 0; i < numberOfTimes; i++) {
+            actions.sendKeys(keys).build().perform();
+        }
+    }
+
     private String getElementName(WebElement webElement) {
         try {
             return webElement.getAccessibleName();
