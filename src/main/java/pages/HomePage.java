@@ -22,6 +22,9 @@ public class HomePage extends ParentPage {
     @FindBy(xpath = ".//button[contains(text(),'Sign Out')]")
     private WebElement signOutButton;
 
+    @FindBy(xpath=".//div[@class='text-center']")
+    private WebElement welcomeMessage;
+
 
     @Override
     String getRelativeUrl() {
@@ -41,7 +44,7 @@ public class HomePage extends ParentPage {
     }
 
     public HomePage checkRedirectToHomePageWHenUserDoesntFollowAnyone(String text) {
-        Assert.assertTrue("Welcome message is not displayed", text.matches(text));
+        Assert.assertTrue("Welcome message is not displayed", welcomeMessage.getText().matches(text));
 
         return this;
     }

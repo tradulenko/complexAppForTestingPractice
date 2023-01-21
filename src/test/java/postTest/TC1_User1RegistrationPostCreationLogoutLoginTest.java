@@ -11,8 +11,8 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
     final String username = "boiaryntseva" + date;
     final String email = "125test" + date + "@test.com";
     final String profileName = username;
-    final String welcomeText = "\"Hello " + username + ", your feed is empty.\n" +
-            "Your feed displays the latest posts from the people you follow. If you don’t have any friends to follow that’s okay; you can use the “Search” feature in the top menu bar to find content written by people with similar interests and then follow them.\"";
+    final String welcomeText = "Hello " + username + ", your feed is empty.\n" +
+            "Your feed displays the latest posts from the people you follow. If you don’t have any friends to follow that’s okay; you can use the “Search” feature in the top menu bar to find content written by people with similar interests and then follow them.";
     final String postTitle = "New post " + username + ".";
     final String postBody = "Good day " + date;
     final String successText = "New post successfully created.";
