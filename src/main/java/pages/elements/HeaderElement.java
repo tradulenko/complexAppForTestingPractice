@@ -13,9 +13,9 @@ public class HeaderElement extends CommonActionsWithElements {
     @FindBy(xpath = ".//button[@class='btn btn-sm btn-secondary']")
     private WebElement buttonSignOut;
     @FindBy(xpath = ".//*[@alt='My profile']")
-    private WebElement avatarIcon;
+    private WebElement myProfileIcon;
     @FindBy(xpath = ".//*[@data-icon='comment']")
-    private WebElement commentIcon;
+    private WebElement chatIcon;
     @FindBy(xpath = ".//*[@data-icon='search']")
     private WebElement searchWizard;
     @FindBy(xpath = ".//span[@class='text-white mr-2']")
@@ -31,8 +31,8 @@ public class HeaderElement extends CommonActionsWithElements {
         return isElementDisplayed(buttonSignOut);
     }
 
-    public MyProfilePage clickOnAvatarIcon() {
-        clickOnElement(avatarIcon);
+    public MyProfilePage clickOnMyProfileIcon() {
+        clickOnElement(myProfileIcon);
         return new MyProfilePage(webDriver);
     }
 
@@ -42,7 +42,7 @@ public class HeaderElement extends CommonActionsWithElements {
     }
 
     public boolean isAvatarIconDisplayed() {
-        return isElementDisplayed(avatarIcon);
+        return isElementDisplayed(myProfileIcon);
     }
 
     public String displayedProfileName() {
@@ -54,7 +54,7 @@ public class HeaderElement extends CommonActionsWithElements {
     }
 
     public boolean isCommentIconDisplayed() {
-        return isElementDisplayed(commentIcon);
+        return isElementDisplayed(chatIcon);
     }
 
     public boolean isCreatePostButtonDisplayed() {

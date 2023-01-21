@@ -1,21 +1,22 @@
-package baseTest;
+package postTest;
 
+import baseTest.BaseTest;
 import libs.Utils;
 import org.junit.Test;
-
 import java.text.ParseException;
 
 public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
 
-    private String date = Utils.getDateAndTimeFormatted();
-    private String username = "boiaryntseva" + date;
-    private String email = "125test" + date + "@test.com";
-    private String profileName = username;
-    private String welcomeText = "\"Hello " + username + ", your feed is empty.\n" +
+    final String date = Utils.getDateAndTimeFormatted();
+    final String username = "boiaryntseva" + date;
+    final String email = "125test" + date + "@test.com";
+    final String profileName = username;
+    final String welcomeText = "\"Hello " + username + ", your feed is empty.\n" +
             "Your feed displays the latest posts from the people you follow. If you don’t have any friends to follow that’s okay; you can use the “Search” feature in the top menu bar to find content written by people with similar interests and then follow them.\"";
-    private String postTitle = "New post " + username + ".";
-    private String postBody = "Good day " + date;
-    private String successText = "New post successfully created.";
+    final String postTitle = "New post " + username + ".";
+    final String postBody = "Good day " + date;
+    final String successText = "New post successfully created.";
+    final String availabilityMessage = "Note: This post was written for All Users";
 
     @Test
     public void createPostTest() throws ParseException {
@@ -33,7 +34,7 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
                 .fillInPostBody(postBody)
                 .savePost()
                 .checkRedirectToPostPage()
-                .checkPostWasCreated(successText, postTitle, username, date)
+                .checkPostWasCreated(successText, postTitle, username, date, availabilityMessage, postBody)
                 .getHeaderElement()
                 .clickOnSignOutButton()
                 .checkRedirectToLoginPage()
@@ -43,7 +44,7 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
                 .checkRedirectToHomePage(username)
                 .checkRedirectToHomePageWHenUserDoesntFollowAnyone(welcomeText)
                 .getHeaderElement()
-                .clickOnAvatarIcon()
+                .clickOnMyProfileIcon()
                 .checkRedirectToMytProfilePage()
                 .checkMyProfilePageData(username, postTitle, date);
 

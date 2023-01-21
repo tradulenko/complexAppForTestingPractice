@@ -37,6 +37,12 @@ public class PostPage extends ParentPage {
     @FindBy(xpath = " .//p[@class='text-muted small mb-4']")
     private WebElement postedByInfoText;
 
+    @FindBy(xpath = ".//div[@class='body-content'][1]")
+    private WebElement postAvailabilityDescription;
+
+    @FindBy(xpath = ".//div[@class='body-content'][2]")
+    private WebElement postBody;
+
     @Override
     String getRelativeUrl() {
         return "/post/.*";
@@ -50,9 +56,11 @@ public class PostPage extends ParentPage {
         return this;
     }
 
-    public PostPage checkPostWasCreated(String successText, String postTitleText, String username, String date) throws ParseException {
+    public PostPage checkPostWasCreated(String successText, String postTitleText, String username, String date, String availabilityMessage, String postBodyText) throws ParseException {
         Assert.assertTrue("Success message is not displayed", successMessage.getText().matches(successText));
         Assert.assertTrue("Post title doesn't match", createdPostTitle.getText().matches(postTitleText));
+        Assert.assertEquals("Text about who this message is available to doesn't match", availabilityMessage, postAvailabilityDescription.getText());
+        Assert.assertEquals("Post body doesn't match", postBodyText, postBody.getText());
         Assert.assertTrue("'Posted by' text is not there/wrong", postedByInfoText.getText().matches("Posted by " + username + " on " + Utils.formatDateToAnotherFormat(date)));
         return this;
     }

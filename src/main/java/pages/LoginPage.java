@@ -15,7 +15,7 @@ public class LoginPage extends ParentPage {
     private WebElement inputUserPasswordHeader;
 
     @FindBy(xpath = ".//button[text()='Sign In']")
-    private WebElement buttonSingIn;
+    private WebElement buttonSignIn;
 
     @FindBy(xpath = ".//button[text()='Sign Out']")
     private WebElement buttonSingOut;
@@ -59,7 +59,7 @@ public class LoginPage extends ParentPage {
 
     public LoginPage checkRedirectToLoginPage() {
         checkUrl();
-        Assert.assertTrue("Login Page is not loaded", isElementDisplayed(buttonSingIn));
+        Assert.assertTrue("Login Page is not loaded", isElementDisplayed(buttonSignIn));
         return this;
     }
 
@@ -77,7 +77,7 @@ public class LoginPage extends ParentPage {
 
     @Step
     public HomePage clickOnButtonSignIn() {
-        clickOnElement(buttonSingIn);
+        clickOnElement(buttonSignIn);
         return new HomePage(webDriver);
     }
 
