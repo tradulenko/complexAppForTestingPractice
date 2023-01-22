@@ -1,8 +1,11 @@
 package postTest;
 
 import baseTest.BaseTest;
+import libs.ConfigPropertiesHidden;
 import libs.Utils;
 import org.junit.Test;
+import pages.PropertiesProvider;
+
 import java.text.ParseException;
 
 public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
@@ -18,12 +21,13 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
     final String successText = "New post successfully created.";
     final String availabilityMessage = "Note: This post was written for All Users";
 
+
     @Test
     public void createPostTest() throws ParseException {
         loginPage.openLoginPage()
                 .enterUserNameInRegisterForm(username)
                 .enterEmailInRegisterForm(email)
-                .enterPasswordInRegisterForm("123456qwerty")
+                .enterPasswordInRegisterForm(defaultValidPassword)
                 .clickOnSignUpButton()
                 .checkRedirectToHomePage(profileName)
                 .checkRedirectToHomePageWHenUserDoesntFollowAnyone(welcomeText)
