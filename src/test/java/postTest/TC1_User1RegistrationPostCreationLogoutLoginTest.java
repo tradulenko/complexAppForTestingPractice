@@ -43,7 +43,7 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
                 .clickOnSignOutButton()
                 .checkRedirectToLoginPage()
                 .enterUserNameIntoLoginInput(username)
-                .enterPasswordIntoLoginInput("123456qwerty")
+                .enterPasswordIntoLoginInput(defaultValidPassword)
                 .clickOnButtonSignIn()
                 .checkRedirectToHomePage(username)
                 .checkRedirectToHomePageWHenUserDoesntFollowAnyone(welcomeText)
