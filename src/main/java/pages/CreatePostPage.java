@@ -26,11 +26,12 @@ public class CreatePostPage extends ParentPage {
 
     public CreatePostPage checkRedirectToCreatePostPage() {
         checkUrl();
-        Assert.assertTrue(textAreaPostBody.isDisplayed());
+        Assert.assertTrue("CreatePostPage is not loaded", textAreaPostBody.isDisplayed());
         return this;
     }
 
     public CreatePostPage fillInPostTitle(String title) {
+        waitChatToBeHidden();
         enterTextIntoElement(postTitle, title);
         return this;
     }

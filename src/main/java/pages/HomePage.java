@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.elements.HeaderElement;
 
@@ -18,6 +19,12 @@ public class HomePage extends ParentPage {
     @Override
     String getRelativeUrl() {
         return "/";
+    }
+
+    public HomePage checkIsRedirectToHomePage() {
+        checkUrl();
+        Assert.assertTrue("Home page doesn't loaded", headerElement.isButtonSignOutDisplayed());
+        return this;
     }
 
 

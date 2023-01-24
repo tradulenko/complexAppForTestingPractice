@@ -7,9 +7,9 @@ import libs.properties_files.PropertiesFilesProvider;
 
 public class GlobalParametersProvider {
 
-    private static final String BASE_URL_LAST_PART = System.getProperty("url", configPropertiesHidden.BASE_URL()) ;
+    private static final String BASE_URL_LAST_PART = System.getProperty("url", configPropertiesHidden.BASE_URL());
 
-    private static final String FULL_BASE_URL = "https://" + System.getProperty("env", "qa") + "-" + BASE_URL_LAST_PART;
+    private static final String FULL_BASE_URL = "https://" + System.getProperty("env", "aqa") + "-" + BASE_URL_LAST_PART;
 
     private static final String DEFAULT_VALID_LOGIN = System.getProperty("login", PropertiesFilesProvider.configPropertiesHidden.DEFAULT_LOGIN());
     private static final String DEFAULT_VALID_PASSWORD = System.getProperty("password", PropertiesFilesProvider.configPropertiesHidden.DEFAULT_PASSWORD());
@@ -30,7 +30,7 @@ public class GlobalParametersProvider {
         return DEFAULT_VALID_LOGIN;
     }
 
-    public static String getDefaultValidPassword() throws NotSpecifiedGlobalParameterException{
+    public static String getDefaultValidPassword() throws NotSpecifiedGlobalParameterException {
         if ((DEFAULT_VALID_PASSWORD == null) || DEFAULT_VALID_PASSWORD.isEmpty())
             throw new NotSpecifiedGlobalParameterException("Add params 'password' to the command line or load HiddenConfig with valid value");
         return DEFAULT_VALID_PASSWORD;

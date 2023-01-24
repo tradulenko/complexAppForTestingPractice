@@ -31,7 +31,7 @@ abstract class ParentPage extends CommonActionsWithElements {
                 , actualURL.matches(baseUrl + getRelativeUrl()));
     }
 
-    protected void waitChatToBeHide() {
+    protected void waitChatToBeHidden() {
         webDriverWaitLow.withMessage("Chat is not closed")
                 .until(ExpectedConditions
                         .invisibilityOfElementLocated(By.xpath(".//*[@id='chat-wrapper']")));
