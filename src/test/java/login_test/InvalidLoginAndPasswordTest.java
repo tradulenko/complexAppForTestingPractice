@@ -29,7 +29,6 @@ public class InvalidLoginAndPasswordTest extends BaseTest {
                 .clickOnButtonSignIn();
         Assert.assertTrue("Message 'Invalid username / password' is displayed "
                 , loginPage.isMessageInvalidCredsDisplayed());
-
     }
 
     public static Object[][] provideParameters() {

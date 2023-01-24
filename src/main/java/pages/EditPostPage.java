@@ -39,7 +39,7 @@ public class EditPostPage extends ParentPage {
     }
 
     public EditPostPage enterNewTextTitleInEdit(String newTitle) {
-        waitChatToBeHide();
+        waitChatToBeHidden();
         logger.info("OLD Title is '" + editTitle.getAttribute("value") + "'");
         enterTextIntoElement(editTitle, newTitle);
         return this;
@@ -47,12 +47,11 @@ public class EditPostPage extends ParentPage {
 
     public EditPostPage clickOnSaveUpdates() {
         clickOnElement(buttonSaveUpdates);
-        waitChatToBeHide();
         return this;
     }
 
     public EditPostPage checkTextMessageAfterEdit(String message) {
-        waitChatToBeHide();
+        waitChatToBeHidden();
         Assert.assertEquals("Wrong text message after click on Edit post", message, textMessageOnEdit.getText());
         return this;
     }

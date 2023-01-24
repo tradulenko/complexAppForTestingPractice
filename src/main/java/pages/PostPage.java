@@ -49,7 +49,7 @@ public class PostPage extends ParentPage {
     }
 
     public PostPage checkAlertMessage(String textAlert) {
-        waitChatToBeHide();
+        waitChatToBeHidden();
         Assert.assertTrue("alert message doesn't display", isElementDisplayed(alertMessage));
         Assert.assertEquals("text in alert message is wrong", textAlert, alertMessage.getText());
         return this;
@@ -84,7 +84,7 @@ public class PostPage extends ParentPage {
 
     public EditPostPage clickOnEditPost() {
         clickOnElement(editButton);
-        waitChatToBeHide();
+        waitChatToBeHidden();
         return new EditPostPage(webDriver);
     }
 

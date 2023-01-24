@@ -31,7 +31,7 @@ public class CreatePostPage extends ParentPage {
     }
 
     public CreatePostPage fillInPostTitle(String title) {
-        waitChatToBeHide();
+        waitChatToBeHidden();
         enterTextIntoElement(postTitle, title);
         return this;
     }

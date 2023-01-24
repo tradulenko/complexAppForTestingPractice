@@ -42,7 +42,7 @@ public class MyProfilePage extends ParentPage {
         List<WebElement> listOfSearchingPost = getPostsListWithTitle(title);
         while (listOfSearchingPost.size() != 0) {
             clickOnElement(listOfSearchingPost.get(0));
-            waitChatToBeHide();
+            waitChatToBeHidden();
             new PostPage(webDriver).checkRedirectToPostPage()
                     .checkPostTitle(title)
                     .clickOnDeletePost()
@@ -56,11 +56,11 @@ public class MyProfilePage extends ParentPage {
     }
 
     public EditPostPage editPost(String title, String newTitle, String messageEdit) {
-        waitChatToBeHide();
+        waitChatToBeHidden();
         List<WebElement> listPostWithTitle = getPostsListWithTitle(title);
         if (!listPostWithTitle.isEmpty()) {
             clickOnElement(listPostWithTitle.get(0));
-            waitChatToBeHide();
+            waitChatToBeHidden();
             new PostPage(webDriver).clickOnEditPost()
                     .checkToRedirectToEditePostPage()
                     .enterNewTextTitleInEdit(newTitle)
@@ -74,8 +74,8 @@ public class MyProfilePage extends ParentPage {
     }
 
     public MyProfilePage checkPostWasSave(String title) {
-        waitChatToBeHide();
-        Assert.assertEquals("Wrong number of posts after editing ", 1, getPostsListWithTitle(title).size());
+        waitChatToBeHidden();
+        Assert.assertEquals("Wrong number of posts after creating/editing ", 1, getPostsListWithTitle(title).size());
         Assert.assertTrue("Titles of post don't equals", getPostsListWithTitle(title).get(0).getText().equals(title));
 
         return this;
