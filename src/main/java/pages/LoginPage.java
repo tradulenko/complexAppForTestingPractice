@@ -95,6 +95,8 @@ public class LoginPage extends ParentPage {
         return this;
     }
 
+
+
     public LoginPage enterPasswordInRegisterForm(String password) {
         enterTextIntoElement(inputUserPasswordRegister, password);
         return this;
