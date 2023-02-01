@@ -1,4 +1,4 @@
-package baseTest;
+package base_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
@@ -17,17 +17,14 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import pages.HomePage;
 import pages.LoginPage;
-import pages.PropertiesProvider;
 
 import java.time.Duration;
 
 public class BaseTest {
-    WebDriver webDriver;
-    Logger logger = Logger.getLogger(getClass());
+    private WebDriver webDriver;
+    private Logger logger = Logger.getLogger(getClass());
     protected LoginPage loginPage;
     protected HomePage homePage;
-    protected static String defaultValidLogin = System.getProperty("login", PropertiesProvider.configPropertiesHidden.DEFAULT_LOGIN());
-    protected static String defaultValidPassword = System.getProperty("password", PropertiesProvider.configPropertiesHidden.DEFAULT_PASSWORD());
 
     @Before
     public void setUp() {
@@ -77,7 +74,7 @@ public class BaseTest {
     };
 
 
-    private WebDriver initDriver() {
+    private void initDriver() {
         String browser = System.getProperty("browser");
         if ((browser == null) || "chrome".equalsIgnoreCase(browser)) {
             WebDriverManager.chromedriver().setup();
@@ -89,10 +86,8 @@ public class BaseTest {
             //WebDriverManager.iedriver().setup();
             // in most cases 32bit version is needed
             WebDriverManager.iedriver().arch32().setup();
-            return new InternetExplorerDriver();
+            webDriver = new InternetExplorerDriver();
         }
-        return webDriver;
-
     }
 
 }
