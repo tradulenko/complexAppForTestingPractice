@@ -14,13 +14,9 @@ public class Utils {
 
     public static String formatDateToAnotherFormat(String originalDate) throws ParseException {
         DateFormat originalFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH);
-        DateFormat targetFormat = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat targetFormat = new SimpleDateFormat("M/d/yyyy");
         Date date = originalFormat.parse(originalDate);
         String formattedDate = targetFormat.format(date);
-        if (formattedDate.startsWith("0")) {
-            String newDate = formattedDate.replaceFirst("0", "");
-            return newDate;
-        }
         return formattedDate;
     }
 
