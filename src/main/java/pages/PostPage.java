@@ -56,12 +56,38 @@ public class PostPage extends ParentPage {
         return this;
     }
 
-    public PostPage checkPostWasCreated(String successText, String postTitleText, String username, String date, String availabilityMessage, String postBodyText) throws ParseException {
-        Assert.assertTrue("Success message is not displayed", successMessage.getText().matches(successText));
+    public PostPage isSuccessMessageDisplayed(String successText) {
+        Assert.assertEquals("Success message is not displayed", successMessage.getText(), successText);
+        return this;
+    }
+
+    public PostPage isPostTitleCorrect(String postTitleText) {
         Assert.assertTrue("Post title doesn't match", createdPostTitle.getText().matches(postTitleText));
+        return this;
+    }
+
+    public PostPage isAvailabilityShownCorrectly(String availabilityMessage) {
         Assert.assertEquals("Text about who this message is available to doesn't match", availabilityMessage, postAvailabilityDescription.getText());
+        return this;
+    }
+
+    public PostPage isPostBodyCorrect(String postBodyText) {
         Assert.assertEquals("Post body doesn't match", postBodyText, postBody.getText());
-        Assert.assertTrue("'Posted by' text is not there/wrong", postedByInfoText.getText().matches("Posted by " + username + " on " + Utils.formatDateToAnotherFormat(date)));
+        return this;
+    }
+
+    public PostPage isPostedByInfoShownCorrectly(String username, String date) throws ParseException {
+        Assert.assertEquals("'Posted by' text is not there/wrong", postedByInfoText.getText(), "Posted by " + username + " on " + Utils.formatDateToAnotherFormat(date));
+        return this;
+    }
+
+    public PostPage checkPostWasCreated(String successText, String postTitleText, String username, String date, String availabilityMessage, String postBodyText) throws ParseException {
+        isSuccessMessageDisplayed(successText);
+        isPostTitleCorrect(postTitleText);
+        isAvailabilityShownCorrectly(availabilityMessage);
+        isPostBodyCorrect(postBodyText);
+        isPostedByInfoShownCorrectly(username, date);
+
         return this;
     }
 

@@ -1,11 +1,9 @@
-package postTest;
+package post_test;
 
-import baseTest.BaseTest;
-import libs.ConfigPropertiesHidden;
+import base_test.BaseTest;
 import libs.Utils;
+import libs.global_parameters.GlobalParametersProvider;
 import org.junit.Test;
-import pages.PropertiesProvider;
-
 import java.text.ParseException;
 
 public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
@@ -22,12 +20,13 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
     final String availabilityMessage = "Note: This post was written for All Users";
 
 
+
     @Test
     public void createPostTest() throws ParseException {
         loginPage.openLoginPage()
                 .enterUserNameInRegisterForm(username)
                 .enterEmailInRegisterForm(email)
-                .enterPasswordInRegisterForm(defaultValidPassword)
+                .enterPasswordInRegisterForm(GlobalParametersProvider.getDefaultValidPassword())
                 .clickOnSignUpButton()
                 .checkRedirectToHomePage(profileName)
                 .checkRedirectToHomePageWHenUserDoesntFollowAnyone(welcomeText)
@@ -43,7 +42,7 @@ public class TC1_User1RegistrationPostCreationLogoutLoginTest extends BaseTest {
                 .clickOnSignOutButton()
                 .checkRedirectToLoginPage()
                 .enterUserNameIntoLoginInput(username)
-                .enterPasswordIntoLoginInput(defaultValidPassword)
+                .enterPasswordIntoLoginInput(GlobalParametersProvider.getDefaultValidPassword())
                 .clickOnButtonSignIn()
                 .checkRedirectToHomePage(username)
                 .checkRedirectToHomePageWHenUserDoesntFollowAnyone(welcomeText)

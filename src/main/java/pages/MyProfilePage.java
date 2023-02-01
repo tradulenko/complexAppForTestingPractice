@@ -36,14 +36,38 @@ public class MyProfilePage extends ParentPage {
         return this;
     }
 
-    public MyProfilePage checkMyProfilePageData(String username, String postTitle, String date) throws ParseException {
-        System.out.println(listOfPostsPostedByUser.getText());
+    public MyProfilePage isAvatarImageDisplayed() {
         Assert.assertTrue("Avatar image is not displayed", isElementDisplayed(avatarImage));
-        Assert.assertTrue("Profile name does not match", profileName.getText().matches(username));
+        return this;
+    }
+
+    public MyProfilePage isProfileNameMatchingUsername(String username) {
+        Assert.assertEquals("Profile name does not match", profileName.getText(), username);
+        return this;
+    }
+
+    public MyProfilePage isPostTitleCorrect(String postTitle, String date) throws ParseException {
         Assert.assertTrue("'Post information is wrong/empty", listOfPostsPostedByUser.getText().matches(postTitle + " on " + Utils.formatDateToAnotherFormat(date)));
+        return this;
+    }
+
+    public MyProfilePage isNumberOfPostsOne() {
         Assert.assertTrue("Number of posts is more then 1", numberOfExistingPost.getText().contains("1"));
+        return this;
+    }
+
+    public MyProfilePage isNumberOfFollowersAndPeopleFollowingZero() {
         Assert.assertTrue("Number of followers is > 0", numberOfFollowers.getText().contains("0"));
         Assert.assertTrue("Number of people following is more then 1", numberOfPeopleFollowing.getText().contains("0"));
+        return this;
+    }
+
+    public MyProfilePage checkMyProfilePageData(String username, String postTitle, String date) throws ParseException {
+        isAvatarImageDisplayed();
+        isProfileNameMatchingUsername(username);
+        isPostTitleCorrect(postTitle,date);
+        isNumberOfPostsOne();
+        isNumberOfFollowersAndPeopleFollowingZero();
 
         return this;
     }
